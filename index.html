@@ -19,6 +19,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
         }
         .main-content {
             display: flex;
@@ -26,9 +27,9 @@
             align-items: flex-start;
         }
         .number-display {
-            font-size: 5em;
+            font-size: 4em; /* Reduced font size */
             text-align: center;
-            margin-right: 50px;
+            margin-right: 30px; /* Adjusted margin */
             font-weight: bold;
         }
         .number-list {
@@ -59,8 +60,8 @@
 </head>
 <body>
     <div class="container">
+        <div class="number-display" id="current-number">GITS Orientation 2024-2025<br>HOUSIE GAME</div>
         <div class="main-content">
-            <div class="number-display" id="current-number">GITS Orientation 2024-2025<br>HOUSIE GAME</div>
             <div class="number-list" id="number-list">
                 <!-- Numbers from 1 to 100 will be populated here -->
             </div>
