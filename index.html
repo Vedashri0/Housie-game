@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housie Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: darkblue;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+        }
+        .number-display {
+            font-size: 5em;
+            text-align: center;
+            margin-right: 50px;
+            font-weight: bold;
+        }
+        .number-list {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 5px;
+            max-height: 80vh;
+            overflow-y: auto;
+            text-align: center;
+        }
+        .number-list span {
+            margin: 5px;
+            font-size: 1.5em;
+        }
+        .crossed-out {
+            text-decoration: line-through;
+            color: red;
+            font-weight: bold;
+            font-size: 2em;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <div class="number-display" id="current-number">Housie Game</div>
+            <div class="number-list" id="number-list">
+                <!-- Numbers from 1 to 100 will be populated here -->
+            </div>
+        </div>
+        <div>
+            <button onclick="nextNumber()">Next Number</button>
+            <button onclick="resetGame()">Restart Game</button>
+        </div>
+    </div>
+
+    <script>
+        let numbers = Array.from({length: 100}, (_, i) => i + 1);
+        let drawnNumbers = [];
+
+        function populateNumberList() {
+            const numberList = document.getElementById('number-list');
+            numberList.innerHTML = '';
+            for (let i = 1; i <= 100; i++) {
+                const numberSpan = document.createElement('span');
+                numberSpan.id = `number-${i}`;
+                numberSpan.textContent = i;
+                numberList.appendChild(numberSpan);
+            }
+        }
+
+        function nextNumber() {
+            if (numbers.length === 0) {
+                alert("All numbers have been drawn.");
+                return;
+            }
+            const randomIndex = Math.floor(Math.random() * numbers.length);
+            const number = numbers.splice(randomIndex, 1)[0];
+            drawnNumbers.push(number);
+
+            document.getElementById('current-number').textContent = number;
+            const drawnNumberElement = document.getElementById(`number-${number}`);
+            drawnNumberElement.classList.add('crossed-out');
+        }
+
+        function resetGame() {
+            numbers = Array.from({length: 100}, (_, i) => i + 1);
+            drawnNumbers = [];
+            document.getElementById('current-number').textContent = 'Housie Game';
+            populateNumberList();
+        }
+
+        window.onload = populateNumberList;
+    </script>
+</body>
+</html>
