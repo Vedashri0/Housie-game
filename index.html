@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Housie Game</title>
+    <title>GITS Orientation 2024-2025 HOUSIE GAME</title>
     <style>
         body {
             display: flex;
@@ -60,7 +60,7 @@
 <body>
     <div class="container">
         <div class="main-content">
-            <div class="number-display" id="current-number">Housie Game</div>
+            <div class="number-display" id="current-number">GITS Orientation 2024-2025<br>HOUSIE GAME</div>
             <div class="number-list" id="number-list">
                 <!-- Numbers from 1 to 100 will be populated here -->
             </div>
@@ -103,7 +103,7 @@
         function resetGame() {
             numbers = Array.from({length: 100}, (_, i) => i + 1);
             drawnNumbers = [];
-            document.getElementById('current-number').textContent = 'Housie Game';
+            document.getElementById('current-number').innerHTML = 'GITS Orientation 2024-2025<br>HOUSIE GAME';
             populateNumberList();
         }
 
